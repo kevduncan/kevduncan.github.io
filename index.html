@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Kevin Duncan</title>
+		<link rel="shortcut icon" href="http://kevduncan.github.io/favicon.ico">
+		<link rel="stylesheet" href="styles/main.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+	</head>
+
+	<body data-spy="scroll" data-target="#topnav" data-offset="50">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top" id="topnav">
+	        <div class="container-fluid">
+	            <div class="navbar-header">
+	                <a class="navbar-brand">Kevin Duncan</a>
+	            </div>
+	        <ul class="nav navbar-nav">
+	          <li id="hnav"><a href="#Home">Home</a></li>
+	          <li id="rnav"><a href="#Resume">Resume</a></li>
+	          <li id="cnav"><a href="#Cover">Cover Letter</a></li>
+	          <li id="anav"><a href="#Add">Additional Info</a></li>
+	        </ul>
+	      </div>
+	    </nav>
+
+
+		<div class="container-fluid">
+
+			<div id="Home" class="jumbotron">
+				<h3 class="text-center">About Me</h3>
+				<img id="me" class="img-rounded center-block" src="http://kevduncan.github.io/me.png"><br>
+				<p class="text-center">Recent Graduate of <a href="http://www.fordham.edu/site/index.php">Fordham University</a></p>
+           		<p class="text-center">BS in Computer Science <br> 3.69 Major GPA</p>
+           		<a href="https://www.linkedin.com/pub/kevin-duncan/95/613/6a6">
+      				<img class="center-block" src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x33.png" width="160" height="33" border="0" alt="View Kevin Duncan's profile on LinkedIn">
+        		</a>
+        		<br><br>
+        		<!-- <p class="text-center">Below you will find all of the professional aspects of my life that you need to know. However, what you will not find listed are some of my personal, not-so-professional achievements. So, more about me: I am an avid follower of all sports and thrive on competition - speaking of which I've managed to finish in 2nd place two years in a row in my fantasy football league. I'm a puzzle enthusiast who enjoys solving daily crosswords, beating my personal-best rubik's cube time, and crushing my friends in the tetris Mario Party Minigame. Video games have been a part of my life since grade school and continue to be one of my favorite hobbies along with pick-up sports, guitar, and walking my roomate's dog Daisy. I am currently seeking full-time employment after graduation, and would love the opportunity to discuss anything more about myself that you may be intersted in.</p> -->
+<!-- 
+			</div>
+			<div id="Projects" class="jumbotron">
+				<h3 class="text-center"> Projects </h3>
+				<p>Carousel scrolling through screenshots of projects</p>
+				<p>when project image clicked on, use angular to hide all except nav bar and show info about project</p>
+				<p>MAKE A STYLE.CSS AND CHANGE AROUND STYLING OF WEBSITE</p>
+			</div>
+ -->
+			<div id="Resume" class="jumbotron">
+				<h3 class="text-center">Resume &nbsp;
+					<a href="http://kevduncan.github.io/resume.jpg" download data-toggle="tooltip" title="Download"><span class="glyphicon glyphicon-download-alt"></span></a>
+				</h3> 
+				<img id="res" class="center-block img-responsive" src="http://kevduncan.github.io/Kevin Duncan Resume 9_2016.jpg">
+			</div>
+
+			<div id="Cover" class="jumbotron">
+				<h3 class="text-center">General Cover Letter &nbsp;
+					<a href="http://kevduncan.github.io/cover.jpg" download data-toggle="tooltip" title="Download"><span class="glyphicon glyphicon-download-alt"></span></a>
+				</h3>
+				<img id="cov" class="center-block img-responsive" src="http://kevduncan.github.io/GENERAL COVER LETTER.jpg">
+			</div>
+
+			<div id="Add" class="jumbotron">
+				<h3 class="text-center">Additional Info &nbsp;
+					<a href="http://kevduncan.github.io/additional.jpg" download data-toggle="tooltip" title="Download"><span class="glyphicon glyphicon-download-alt"></span></a>
+				</h3>
+				<img id="ad" class="center-block img-responsive" src="http://kevduncan.github.io/Additional.jpg">
+			</div>
+		</div>
+		
+		
+		<div id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+			<p class="text-muted"> &copy; 2017 - Designed by Kevin Duncan</p>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</body>
+
+	<script>
+		$(".nav a").on("click", function(){
+	   		$(".nav").find(".active").removeClass("active");
+	   		$(this).parent().addClass("active");
+		});
+	</script>
+
+
+	<style>
+		  body {
+		      position: relative;
+		      height: 100%;
+		  }
+		  #footer {padding-top: 15px; padding-left: 15px;}
+		  #Home {padding-top: 50px;}
+		  #Resume {padding-top:50px;} 
+		  #Cover {padding-top:50;} 
+		  #Add {padding-top:50px;} 
+		  #res {max-width: 75%;}
+		  #cov {max-width: 75%;}
+		  #ad {max-width: 75%;}
+		  #me {max-width: 37%;
+		  	   max-height: 37%;
+		  }
+ 	</style>
+</html>
+
+
+
