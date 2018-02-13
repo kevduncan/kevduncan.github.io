@@ -1,0 +1,132 @@
+.carousel-control.right{
+  background-image: none;
+}
+.carousel-control.left{
+  background-image: none;
+}
+body{
+  font-family: 'Roboto Slab', sans-serif;
+}
+#me{
+  max-height: 250px;
+}
+.white{
+  color: #FFFFFF;
+}
+.me-panel{
+  background-color: #7098aa;
+  color: #ffffff;
+}
+.resume-panel{
+  background-color: #70aa9f;
+}
+.movies-panel{
+  background-color: #6c7ab4;
+}
+#top-nav{
+  background-color: #1c313a;
+  color: #ffffff;
+}
+#about-me{
+  background-color: #7da9bd;
+}
+#resume{
+  background-color: #7dbdb1;
+}
+#last-panel{
+  margin-left: 25px;
+}
+#movies{
+  position: relative;
+  background-color: #7d89bd;
+}
+.dots{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 40px;
+}
+.scroll-dot{
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin-bottom: 10px;
+  background-color: #e3e3e3;
+  /*border: 1px solid #000;*/
+  border-radius: 50%;
+}
+.dot-active{
+   height: 15px;
+   width: 15px;
+   box-shadow: 1px 1px 3px #000;
+}
+.image-tile{
+  width: 100%;
+}
+.vertical-middle-page{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.nopad{
+  padding: 0;
+}
+.overlay{
+   background-color: #565656;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 100%;
+   width: 100%;
+   opacity: 0;
+   transition: .5s ease;
+}
+.description{
+   color: white;
+   font-size: 11px;
+   position: absolute;
+   text-align: center;
+   padding-left: 5px;
+   padding-right: 5px;
+   cursor: default;
+}
+.image-col{
+  padding: 0;
+  border-right: 15px solid #6c7ab4;
+}
+.tooltip {
+  margin-right:15px;
+  pointer-events: none;
+}
+.tooltip > .tooltip-inner{
+  background-color: #e3e3e3;
+  color: #000;
+}
+.tooltip > .tooltip-arrow {
+ opacity: 0;
+}
+.top-10{
+  padding-top: 10px;
+}
+.row{
+  margin: 0;
+}
+.border-white{
+  border: 2px solid #fff;
+  padding: 5px;
+}
+.resume-image{
+  /* max-height: 150px; */
+  /* max-width: 150px; */
+}
+.inner-padding{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+@keyframes blink-caret {
+  50% {
+   border-color: transparent;
+ }
+}
