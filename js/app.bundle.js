@@ -81,39 +81,33 @@ var _lodash2 = _interopRequireDefault(_lodash);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 $(document).ready(function () {
-
-  window.onload = function () {
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i = 0; i < elements.length; i++) {
-      var toRotate = elements[i].getAttribute('data-type');
-      var period = elements[i].getAttribute('data-period');
-      if (toRotate) {
-        new TxtType(elements[i], JSON.parse(toRotate), period);
-      }
-    }
-    // INJECT CSS
-    var css = document.createElement("style");
-    css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; animation: blink-caret 1s steps(1) infinite;}";
-    document.body.appendChild(css);
-  };
-
   var BASE_URL = "https://api.themoviedb.org/3/";
   var POSTER_URL = "https://image.tmdb.org/t/p/w185//";
   var SEARCH_PARAMS = "search/movie";
   var API_KEY = "a9b6f566cd58dc6f439628ce8b73a1ba";
   var MOVIES_COUNTER = 0;
-  var MY_MOVIES = [{ title: "The Godfather", watched: false }, { title: "The Sixth Sense", watched: false }, { title: "Goodfellas", watched: false }, { title: "Casablanca", watched: false }, { title: "Friday", watched: false }, { title: "Raiders of the Lost Ark", watched: false }, { title: "Apocalypse Now", watched: false }, { title: "The Usual Suspects", watched: true }, { title: "The Shining", watched: false }, { title: "Car Wash", watched: false }, { title: "The Departed", watched: false }, { title: "Infernal Affairs", watched: false }, { title: "Léon: The Professional", watched: false }];
+  var MY_MOVIES = [{ title: "The Godfather", watched: false }, { title: "The Sixth Sense", watched: false }, { title: "Goodfellas", watched: false }, { title: "Casablanca", watched: false }, { title: "Friday", watched: false }, { title: "Raiders of the Lost Ark", watched: false }, { title: "Apocalypse Now", watched: false }, { title: "The Usual Suspects", watched: true }, { title: "The Shining", watched: false }, { title: "The Departed", watched: false }, { title: "Infernal Affairs", watched: false }, { title: "Léon: The Professional", watched: false }];
 
   (function () {
-    (0, _jqueryScrollify2.default)({
-      section: ".scroll-pane",
-      before: function before(index) {
-        $(".dots .scroll-dot.dot-active").removeClass("dot-active");
-        var scrollDots = $(".dots .scroll-dot");
-        $(scrollDots[index]).addClass("dot-active");
-      }
-    });
+    if ($(window).width() <= 1000) {
+      $(".scroll-pane div").removeClass("vertical-middle-page");
+      $(".last-panel").removeClass("last-panel");
+      $(".dots").hide();
+      $("#intro").addClass("no-top");
+      $(".me-panel").addClass("add-margins");
+      $(".resume-panel").addClass("add-margins");
+      $(".movies-panel").addClass("add-margins");
+    } else {
+      $(".top-bott-padding").removeClass("top-bott-padding");
+      (0, _jqueryScrollify2.default)({
+        section: ".scroll-pane",
+        before: function before(index) {
+          $(".dots .scroll-dot.dot-active").removeClass("dot-active");
+          var scrollDots = $(".dots .scroll-dot");
+          $(scrollDots[index]).addClass("dot-active");
+        }
+      });
+    }
   })();
 
   var Utils = {
@@ -142,6 +136,11 @@ $(document).ready(function () {
       });
       $(".carousel-inner").on('mouseenter', '.carousel-row-container .overlay', Utils.showDescription);
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
+
+      // if($(window).width() <= 1000){
+      //   scrollify.disable();
+      //   $(".scroll-pane div").removeClass("vertical-middle-page");
+      // }
     },
     getMovies: function getMovies() {
       var moviesList = MY_MOVIES;
@@ -162,17 +161,26 @@ $(document).ready(function () {
       });
     },
     renderMovies: function renderMovies(response) {
+      if ($(window).width() < 1000) {
+        var columnType = "mobile-col";
+        var tileType = "";
+        var remainder = MOVIES_COUNTER % 1;
+      } else {
+        var columnType = "image-col";
+        var tileType = "image-tile";
+        var remainder = MOVIES_COUNTER % 4;
+      }
+
       var firstResult = response.results[0];
-      var remainder = MOVIES_COUNTER % 4;
       if (remainder === 0) {
         if (MOVIES_COUNTER === 0) {
-          var movieMarkup = '\n            <div class="item active items' + MOVIES_COUNTER + '">\n              <div class="row carousel-row-container">\n                  <div class="col-sm-2 col-sm-offset-2 image-col text-center">\n                    <img class="image-tile" src="' + (POSTER_URL + firstResult.poster_path) + '">\n                    <div class="overlay">\n                      <div class="description vertical-middle-page">\n                         ' + firstResult.overview + '\n                      </div>\n                    </div>\n                  </div>\n              </div>\n            </div>\n          ';
+          var movieMarkup = '\n            <div class="item active items' + MOVIES_COUNTER + '">\n              <div class="row carousel-row-container">\n                  <div class="col-sm-2 col-sm-offset-2 ' + columnType + ' text-center">\n                    <img class="' + tileType + '" src="' + (POSTER_URL + firstResult.poster_path) + '">\n                    <div class="overlay">\n                      <div class="description vertical-middle-page">\n                         ' + firstResult.overview + '\n                      </div>\n                    </div>\n                  </div>\n              </div>\n            </div>\n          ';
         } else {
-          var movieMarkup = '\n            <div class="item items' + MOVIES_COUNTER + '">\n              <div class="row carousel-row-container">\n                  <div class="col-sm-2 col-sm-offset-2 image-col text-center">\n                    <img class="image-tile" src="' + (POSTER_URL + firstResult.poster_path) + '">\n                    <div class="overlay">\n                      <div class="description vertical-middle-page">\n                         ' + firstResult.overview + '\n                      </div>\n                    </div>\n                  </div>\n              </div>\n            </div>\n          ';
+          var movieMarkup = '\n            <div class="item items' + MOVIES_COUNTER + '">\n              <div class="row carousel-row-container">\n                  <div class="col-sm-2 col-sm-offset-2 ' + columnType + ' text-center">\n                    <img class="' + tileType + '" src="' + (POSTER_URL + firstResult.poster_path) + '">\n                    <div class="overlay">\n                      <div class="description vertical-middle-page">\n                         ' + firstResult.overview + '\n                      </div>\n                    </div>\n                  </div>\n              </div>\n            </div>\n          ';
         }
         $(".carousel-inner").append(movieMarkup);
       } else {
-        var movieMarkup = '\n                <div class="col-sm-2 image-col text-center">\n                  <img class="image-tile" src="' + (POSTER_URL + firstResult.poster_path) + '">\n                  <div class="overlay">\n                    <div class="description vertical-middle-page">\n                       ' + firstResult.overview + '\n                    </div>\n                  </div>\n                </div>\n\n            ';
+        var movieMarkup = '\n                <div class="col-sm-2 ' + columnType + ' text-center">\n                  <img class="' + tileType + '" src="' + (POSTER_URL + firstResult.poster_path) + '">\n                  <div class="overlay">\n                    <div class="description vertical-middle-page">\n                       ' + firstResult.overview + '\n                    </div>\n                  </div>\n                </div>\n\n            ';
         var classToAppend = MOVIES_COUNTER - remainder;
         $('.carousel-inner .items' + classToAppend + ' .row').append(movieMarkup);
       }
@@ -181,6 +189,22 @@ $(document).ready(function () {
   };
 
   App.init();
+
+  window.onload = function () {
+    var elements = document.getElementsByClassName('typewrite');
+    for (var i = 0; i < elements.length; i++) {
+      var toRotate = elements[i].getAttribute('data-type');
+      var period = elements[i].getAttribute('data-period');
+      if (toRotate) {
+        new TxtType(elements[i], JSON.parse(toRotate), period);
+      }
+    }
+    // INJECT CSS
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; animation: blink-caret 1s steps(1) infinite;}";
+    document.body.appendChild(css);
+  };
 
   var TxtType = function TxtType(el, toRotate, period) {
     this.toRotate = toRotate;

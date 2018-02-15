@@ -4,8 +4,15 @@
 .carousel-control.left{
   background-image: none;
 }
-body{
+.scroll-pane{
+  min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
   font-family: 'Roboto Slab', sans-serif;
+}
+p, li{
+  font-family: 'Roboto', sans-serif;
 }
 #me{
   max-height: 250px;
@@ -33,7 +40,7 @@ body{
 #resume{
   background-color: #7dbdb1;
 }
-#last-panel{
+.last-panel{
   margin-left: 25px;
 }
 #movies{
@@ -61,7 +68,7 @@ body{
    box-shadow: 1px 1px 3px #000;
 }
 .image-tile{
-  width: 100%;
+    width: 100%;
 }
 .vertical-middle-page{
   position: relative;
@@ -118,15 +125,35 @@ body{
   padding: 5px;
 }
 .resume-image{
-  /* max-height: 150px; */
-  /* max-width: 150px; */
+  max-height: 150px;
 }
 .inner-padding{
   padding-top: 25px;
   padding-bottom: 25px;
 }
+a:hover{
+  color: #FFF;
+}
 @keyframes blink-caret {
   50% {
    border-color: transparent;
  }
+}
+.no-top{
+  margin-top: 0;
+}
+.add-margins{
+  margin:15px;
+}
+.mobile-tiles{
+  max-height: 50%;
+  margin-bottom: 15px;
+}
+.top-bott-padding{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+.mybutton{
+  max-height: 50px;
+  max-width: 50px;
 }

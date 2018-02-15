@@ -2,26 +2,6 @@ import scrollify from 'jquery-scrollify';
 import _ from 'lodash';
 
 $(document).ready(function() {
-
-
-
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; animation: blink-caret 1s steps(1) infinite;}";
-        document.body.appendChild(css);
-    };
-
-
   var BASE_URL = "https://api.themoviedb.org/3/";
   var POSTER_URL = "https://image.tmdb.org/t/p/w185//";
   var SEARCH_PARAMS = "search/movie";
@@ -37,21 +17,31 @@ $(document).ready(function() {
     {title: "Apocalypse Now", watched: false},
     {title: "The Usual Suspects", watched: true},
     {title: "The Shining", watched: false},
-    {title: "Car Wash", watched: false},
     {title: "The Departed", watched: false},
     {title: "Infernal Affairs", watched: false},
     {title: "Léon: The Professional", watched: false},
   ];
 
   (function() {
-    scrollify({
-      section : ".scroll-pane",
-      before: function(index){
-        $(".dots .scroll-dot.dot-active").removeClass("dot-active");
-        var scrollDots = $(".dots .scroll-dot");
-        $(scrollDots[index]).addClass("dot-active");
-      },
-    });
+    if($(window).width() <= 1000){
+        $(".scroll-pane div").removeClass("vertical-middle-page");
+        $(".last-panel").removeClass("last-panel");
+        $(".dots").hide();
+        $("#intro").addClass("no-top");
+        $(".me-panel").addClass("add-margins");
+        $(".resume-panel").addClass("add-margins");
+        $(".movies-panel").addClass("add-margins");
+    }else{
+        $(".top-bott-padding").removeClass("top-bott-padding");
+      scrollify({
+        section : ".scroll-pane",
+        before: function(index){
+          $(".dots .scroll-dot.dot-active").removeClass("dot-active");
+          var scrollDots = $(".dots .scroll-dot");
+          $(scrollDots[index]).addClass("dot-active");
+        },
+      });
+    }
   })();
 
   var Utils = {
@@ -81,6 +71,11 @@ $(document).ready(function() {
       });
       $(".carousel-inner").on('mouseenter', '.carousel-row-container .overlay', Utils.showDescription);
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
+
+      // if($(window).width() <= 1000){
+      //   scrollify.disable();
+      //   $(".scroll-pane div").removeClass("vertical-middle-page");
+      // }
     },
     getMovies: function(){
       var moviesList = MY_MOVIES;
@@ -102,15 +97,24 @@ $(document).ready(function() {
       });
     },
     renderMovies: function(response){
+      if($(window).width() < 1000){
+        var columnType = "mobile-col";
+        var tileType = "";
+        var remainder = MOVIES_COUNTER % 1;
+      }else{
+        var columnType = "image-col";
+        var tileType = "image-tile";
+        var remainder = MOVIES_COUNTER % 4;
+      }
+
       var firstResult = response.results[0];
-      var remainder = MOVIES_COUNTER % 4;
       if(remainder === 0){
         if(MOVIES_COUNTER === 0){
           var movieMarkup = `
             <div class="item active items${MOVIES_COUNTER}">
               <div class="row carousel-row-container">
-                  <div class="col-sm-2 col-sm-offset-2 image-col text-center">
-                    <img class="image-tile" src="${POSTER_URL+firstResult.poster_path}">
+                  <div class="col-sm-2 col-sm-offset-2 ${columnType} text-center">
+                    <img class="${tileType}" src="${POSTER_URL+firstResult.poster_path}">
                     <div class="overlay">
                       <div class="description vertical-middle-page">
                          ${firstResult.overview}
@@ -124,8 +128,8 @@ $(document).ready(function() {
           var movieMarkup = `
             <div class="item items${MOVIES_COUNTER}">
               <div class="row carousel-row-container">
-                  <div class="col-sm-2 col-sm-offset-2 image-col text-center">
-                    <img class="image-tile" src="${POSTER_URL+firstResult.poster_path}">
+                  <div class="col-sm-2 col-sm-offset-2 ${columnType} text-center">
+                    <img class="${tileType}" src="${POSTER_URL+firstResult.poster_path}">
                     <div class="overlay">
                       <div class="description vertical-middle-page">
                          ${firstResult.overview}
@@ -139,8 +143,8 @@ $(document).ready(function() {
         $(".carousel-inner").append(movieMarkup);
       }else{
         var movieMarkup = `
-                <div class="col-sm-2 image-col text-center">
-                  <img class="image-tile" src="${POSTER_URL+firstResult.poster_path}">
+                <div class="col-sm-2 ${columnType} text-center">
+                  <img class="${tileType}" src="${POSTER_URL+firstResult.poster_path}">
                   <div class="overlay">
                     <div class="description vertical-middle-page">
                        ${firstResult.overview}
@@ -160,6 +164,24 @@ $(document).ready(function() {
 
 
 
+
+
+
+  window.onload = function() {
+      var elements = document.getElementsByClassName('typewrite');
+      for (var i=0; i<elements.length; i++) {
+          var toRotate = elements[i].getAttribute('data-type');
+          var period = elements[i].getAttribute('data-period');
+          if (toRotate) {
+            new TxtType(elements[i], JSON.parse(toRotate), period);
+          }
+      }
+      // INJECT CSS
+      var css = document.createElement("style");
+      css.type = "text/css";
+      css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff; animation: blink-caret 1s steps(1) infinite;}";
+      document.body.appendChild(css);
+  };
 
 
   var TxtType = function(el, toRotate, period) {
