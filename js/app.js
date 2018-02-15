@@ -31,6 +31,7 @@ $(document).ready(function() {
         $(".me-panel").addClass("add-margins");
         $(".resume-panel").addClass("add-margins");
         $(".movies-panel").addClass("add-margins");
+        $("#about-me").addClass("top-padding");
     }else{
         $(".top-bott-padding").removeClass("top-bott-padding");
       scrollify({

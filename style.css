@@ -157,3 +157,6 @@ a:hover{
   max-height: 50px;
   max-width: 50px;
 }
+.top-padding{
+  padding-top: 25px;
+}
