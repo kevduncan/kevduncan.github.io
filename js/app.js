@@ -32,6 +32,7 @@ $(document).ready(function() {
         $(".resume-panel").addClass("add-margins");
         $(".movies-panel").addClass("add-margins");
         $("#about-me").addClass("top-padding");
+        $("#placeholder").hide();
     }else{
         $(".top-bott-padding").removeClass("top-bott-padding");
       scrollify({
