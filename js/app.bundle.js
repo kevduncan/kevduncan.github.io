@@ -98,6 +98,7 @@ $(document).ready(function () {
       $(".resume-panel").addClass("add-margins");
       $(".movies-panel").addClass("add-margins");
       $("#about-me").addClass("top-padding");
+      $("#resume-header").removeClass("res-header");
       $("#placeholder").hide();
     } else {
       $(".top-bott-padding").removeClass("top-bott-padding");
@@ -138,11 +139,6 @@ $(document).ready(function () {
       });
       $(".carousel-inner").on('mouseenter', '.carousel-row-container .overlay', Utils.showDescription);
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
-
-      // if($(window).width() <= 1000){
-      //   scrollify.disable();
-      //   $(".scroll-pane div").removeClass("vertical-middle-page");
-      // }
     },
     getMovies: function getMovies() {
       var moviesList = MY_MOVIES;

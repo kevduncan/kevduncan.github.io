@@ -5,6 +5,7 @@
   background-image: none;
 }
 .scroll-pane{
+  position: relative;
   min-height: 100%;
 }
 
@@ -159,4 +160,15 @@ a:hover{
 }
 .top-padding{
   padding-top: 25px;
+}
+.res-header{
+  margin-bottom: 50px;
+}
+.footer{
+  position: absolute;
+  bottom: 5px;
+  left: 25px;
+}
+.buttons{
+  padding-bottom: 15px;
 }
