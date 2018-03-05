@@ -42,7 +42,7 @@ p, li{
   background-color: #7dbdb1;
 }
 .last-panel{
-  margin-left: 25px;
+  margin-left: 20px;
 }
 #movies{
   position: relative;
@@ -165,11 +165,20 @@ a:hover{
 .res-header{
   margin-bottom: 50px;
 }
-.footer{
+.sticky-footer{
   position: absolute;
   bottom: 5px;
   left: 25px;
 }
+.footer{
+  margin-left: 10px;
+}
 .buttons{
   padding-bottom: 15px;
+}
+.res-icons{
+    margin-top: 25px;
+}
+#download-res{
+  cursor: pointer;
 }

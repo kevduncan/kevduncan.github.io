@@ -99,6 +99,7 @@ $(document).ready(function () {
       $(".movies-panel").addClass("add-margins");
       $("#about-me").addClass("top-padding");
       $("#resume-header").removeClass("res-header");
+      $("#copy").removeClass("sticky-footer").addClass("footer");
       $("#placeholder").hide();
     } else {
       $(".top-bott-padding").removeClass("top-bott-padding");
@@ -139,6 +140,9 @@ $(document).ready(function () {
       });
       $(".carousel-inner").on('mouseenter', '.carousel-row-container .overlay', Utils.showDescription);
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
+      $("#download-res").on('click', function (e) {
+        window.open('https://kevduncan.github.io/assets/resume.pdf', '_blank', 'fullscreen=yes');
+      });
     },
     getMovies: function getMovies() {
       var moviesList = MY_MOVIES;
