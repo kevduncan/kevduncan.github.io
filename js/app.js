@@ -37,14 +37,14 @@ $(document).ready(function() {
         $("#placeholder").hide();
     }else{
         $(".top-bott-padding").removeClass("top-bott-padding");
-      scrollify({
-        section : ".scroll-pane",
-        before: function(index){
-          $(".dots .scroll-dot.dot-active").removeClass("dot-active");
-          var scrollDots = $(".dots .scroll-dot");
-          $(scrollDots[index]).addClass("dot-active");
-        },
-      });
+      // scrollify({
+      //   section : ".scroll-pane",
+      //   before: function(index){
+      //     $(".dots .scroll-dot.dot-active").removeClass("dot-active");
+      //     var scrollDots = $(".dots .scroll-dot");
+      //     $(scrollDots[index]).addClass("dot-active");
+      //   },
+      // });
     }
   })();
 

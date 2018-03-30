@@ -37,9 +37,12 @@ p, li{
 }
 #about-me{
   background-color: #7da9bd;
+  height: 100vh;
+  margin-top: -20px;
 }
 #resume{
   background-color: #7dbdb1;
+  min-height: 100vh;
 }
 .last-panel{
   margin-left: 20px;
@@ -47,6 +50,7 @@ p, li{
 #movies{
   position: relative;
   background-color: #7d89bd;
+  height: 100vh;
 }
 .dots{
   position: fixed;
