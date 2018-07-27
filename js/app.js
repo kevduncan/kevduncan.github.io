@@ -1,4 +1,3 @@
-import scrollify from 'jquery-scrollify';
 import _ from 'lodash';
 
 $(document).ready(function() {
@@ -22,29 +21,27 @@ $(document).ready(function() {
     {title: "Léon: The Professional", watched: false},
   ];
 
+  var RESUME_OFFSET = $("#about-me").height();
+  console.log(RESUME_OFFSET);
+  var MOVIES_OFFSET = RESUME_OFFSET + $("#resume").height();
+
   (function() {
     if($(window).width() <= 1000){
         $(".scroll-pane div").removeClass("vertical-middle-page");
         $(".last-panel").removeClass("last-panel");
         $(".dots").hide();
-        $("#intro").addClass("no-top");
         $(".me-panel").addClass("add-margins");
         $(".resume-panel").addClass("add-margins");
         $(".movies-panel").addClass("add-margins");
-        $("#about-me").addClass("top-padding");
+        $("#about-me").addClass("top-padding mobile-min-height-100");
+        $("#movies").addClass("mobile-min-height-100");
         $("#resume-header").removeClass("res-header");
         $("#copy").removeClass("sticky-footer").addClass("footer");
         $("#placeholder").hide();
     }else{
         $(".top-bott-padding").removeClass("top-bott-padding");
-      // scrollify({
-      //   section : ".scroll-pane",
-      //   before: function(index){
-      //     $(".dots .scroll-dot.dot-active").removeClass("dot-active");
-      //     var scrollDots = $(".dots .scroll-dot");
-      //     $(scrollDots[index]).addClass("dot-active");
-      //   },
-      // });
+        $("#about-me").addClass("desktop-height-100");
+        $("#movies").addClass("desktop-height-100");
     }
   })();
 
@@ -68,7 +65,17 @@ $(document).ready(function() {
         $(".dots .scroll-dot.dot-active").removeClass("dot-active");
         var toScroll = $(this).index() + 1;
         $(this).addClass("dot-active");
-        scrollify.move(`#${toScroll}`);
+        switch(toScroll){
+          case 1:
+            window.scrollTo(0,0);
+            break;
+          case 2:
+            window.scrollTo(0,RESUME_OFFSET);
+            break;
+          case 3:
+            window.scrollTo(0,MOVIES_OFFSET);
+            break;
+        }
       });
       $(".dots").on("mouseenter",".scroll-dot",function(e){
         $(this).tooltip('show');
@@ -77,6 +84,17 @@ $(document).ready(function() {
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
       $("#download-res").on('click', function(e){
         window.open('https://kevduncan.github.io/assets/resume.pdf', '_blank', 'fullscreen=yes');
+      });
+
+      //calculate top position of section 2 and 3 on window resize
+      $(window).resize(function(e){
+        RESUME_OFFSET = $("#about-me").height();
+        MOVIES_OFFSET = RESUME_OFFSET + $("#resume").height();
+      });
+
+      $(window).scroll(function(e){
+
+        // console.log(e);
       });
     },
     getMovies: function(){
@@ -223,7 +241,7 @@ $(document).ready(function() {
         }
 
         setTimeout(function() {
-        that.tick();
+          that.tick();
         }, delta);
     };
 
