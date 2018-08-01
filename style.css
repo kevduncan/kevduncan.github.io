@@ -1,3 +1,7 @@
+.parallax-window {
+    min-height: 70vh;
+    background: transparent;
+}
 .carousel-control.right{
   background-image: none;
 }

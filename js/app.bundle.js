@@ -100,6 +100,7 @@ $(document).ready(function () {
       $("#resume-header").removeClass("res-header");
       $("#copy").removeClass("sticky-footer").addClass("footer");
       $("#placeholder").hide();
+      $(".parallax-window").hide();
     } else {
       $(".top-bott-padding").removeClass("top-bott-padding");
       $("#about-me").addClass("desktop-height-100");
@@ -122,25 +123,25 @@ $(document).ready(function () {
       App.bindEvents();
     },
     bindEvents: function bindEvents() {
-      $(".dots").on("click", ".scroll-dot", function (e) {
-        $(".dots .scroll-dot.dot-active").removeClass("dot-active");
-        var toScroll = $(this).index() + 1;
-        $(this).addClass("dot-active");
-        switch (toScroll) {
-          case 1:
-            window.scrollTo(0, 0);
-            break;
-          case 2:
-            window.scrollTo(0, RESUME_OFFSET);
-            break;
-          case 3:
-            window.scrollTo(0, MOVIES_OFFSET);
-            break;
-        }
-      });
-      $(".dots").on("mouseenter", ".scroll-dot", function (e) {
-        $(this).tooltip('show');
-      });
+      // $(".dots").on("click",".scroll-dot",function(e){
+      //   $(".dots .scroll-dot.dot-active").removeClass("dot-active");
+      //   var toScroll = $(this).index() + 1;
+      //   $(this).addClass("dot-active");
+      //   switch(toScroll){
+      //     case 1:
+      //       window.scrollTo(0,0);
+      //       break;
+      //     case 2:
+      //       window.scrollTo(0,RESUME_OFFSET);
+      //       break;
+      //     case 3:
+      //       window.scrollTo(0,MOVIES_OFFSET);
+      //       break;
+      //   }
+      // });
+      // $(".dots").on("mouseenter",".scroll-dot",function(e){
+      //   $(this).tooltip('show');
+      // });
       $(".carousel-inner").on('mouseenter', '.carousel-row-container .overlay', Utils.showDescription);
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
       $("#download-res").on('click', function (e) {
