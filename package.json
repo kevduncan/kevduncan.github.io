@@ -14,7 +14,7 @@
     "babel-preset-env": "^1.6.1",
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",
-    "jquery-scrollify": "^1.0.19",
+    "jquery-parallax.js": "^1.5.0",
     "lodash": "^4.17.4",
     "webpack": "^3.8.1"
   }

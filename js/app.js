@@ -22,7 +22,6 @@ $(document).ready(function() {
   ];
 
   var RESUME_OFFSET = $("#about-me").height();
-  console.log(RESUME_OFFSET);
   var MOVIES_OFFSET = RESUME_OFFSET + $("#resume").height();
 
   (function() {
