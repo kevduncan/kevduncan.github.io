@@ -8,17 +8,17 @@ $(document).ready(function() {
   var MOVIES_COUNTER = 0;
   var MY_MOVIES = [
     {title: "The Godfather", watched: false},
+    {title: "Ghostbusters 1", watched: false},
     {title: "The Sixth Sense", watched: false},
     {title: "Goodfellas", watched: false},
     {title: "Casablanca", watched: false},
-    {title: "Friday", watched: false},
     {title: "Raiders of the Lost Ark", watched: false},
     {title: "Apocalypse Now", watched: false},
     {title: "The Usual Suspects", watched: true},
     {title: "The Shining", watched: false},
     {title: "The Departed", watched: false},
     {title: "Infernal Affairs", watched: false},
-    {title: "Léon: The Professional", watched: false},
+    {title: "Léon: The Professional", watched: false}
   ];
 
   var RESUME_OFFSET = $("#about-me").height();
