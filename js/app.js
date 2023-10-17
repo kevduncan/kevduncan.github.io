@@ -83,7 +83,7 @@ $(document).ready(function() {
       $(".carousel-inner").on('mouseenter', '.carousel-row-container .overlay', Utils.showDescription);
       $(".carousel-inner").on('mouseleave', '.carousel-row-container .overlay', Utils.hideDescription);
       $("#download-res").on('click', function(e){
-        window.open('https://kevduncan.github.io/assets/resume.pdf', '_blank', 'fullscreen=yes');
+        window.open('https://docs.google.com/document/d/1JStCrhjqigr5wUVTwtIKbRZY58ohFzB5eQz5CWasXUk/edit?usp=sharing', '_blank', 'fullscreen=yes');
       });
 
       //calculate top position of section 2 and 3 on window resize
