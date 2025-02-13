@@ -20,21 +20,27 @@ p, li{
   font-family: 'Roboto', sans-serif;
 }
 #me{
-  max-height: 250px;
+  max-height: 225px;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 12px;
 }
 .white{
   color: #FFFFFF;
 }
 .me-panel{
-  background-color: #7098aa;
+  background-color: #567f91;
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  align-items: center;
 }
 .resume-panel{
-  background-color: #70aa9f;
-  border-radius: 5px;
+  background-color: #569186;
+  border-radius: 12px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
 }
 .movies-panel{
   background-color: #6c7ab4;
@@ -168,8 +174,8 @@ a:hover{
 }
 .mybutton{
   margin-right: 10px;
-  max-height: 50px;
-  max-width: 50px;
+  max-height: 35px;
+  max-width: 35px;
 }
 .top-padding{
   padding-top: 25px;
@@ -212,9 +218,21 @@ a:hover{
 .smaller-icon {
   font-size: 16px;
 }
-
+.avi-container {
+  display: flex;
+  justify-content: center;
+}
 @media only screen and (max-width: 768px) {
   .display__flex {
     display: block;
+  }
+  .me-panel {
+    display: block;
+  }
+  #me {
+    width: 215px;
+  }
+  .add-margins {
+    margin: 48px 16px;
   }
 }
