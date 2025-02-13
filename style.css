@@ -20,22 +20,23 @@ p, li{
   font-family: 'Roboto', sans-serif;
 }
 #me{
-  max-height: 225px;
-  width: 100%;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 100%;
 }
 .white{
   color: #FFFFFF;
 }
 .me-panel{
-  background-color: #567f91;
+  background-color: #537a8b;
   color: #ffffff;
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+}
+.resume-panel-container {
   display: flex;
-  align-items: center;
 }
 .resume-panel{
   background-color: #569186;
@@ -193,7 +194,6 @@ a:hover{
 }
 .buttons{
   padding-top: 15px;
-  padding-bottom: 15px;
 }
 .res-icons{
     margin-top: 25px;
@@ -212,8 +212,27 @@ a:hover{
 .display__flex {
   display: flex;
 }
+.flex__align--center {
+  align-items: center;
+}
+
 .margin__bottom--0 {
   margin-bottom: 0px;
+}
+.padding__top--10px {
+  padding-top: 10px;
+}
+.margin__top--10px {
+  margin-top: 10px;
+}
+.margin__top--32px {
+  margin-top: 32px;
+}
+.margin__left--10px {
+  margin-left: 10px;
+}
+.margin__left--32px {
+  margin-left: 32px;
 }
 .smaller-icon {
   font-size: 16px;
@@ -222,17 +241,21 @@ a:hover{
   display: flex;
   justify-content: center;
 }
+.certs-table { 
+  td {
+    vertical-align: middle !important;
+  }
+}
+
 @media only screen and (max-width: 768px) {
-  .display__flex {
-    display: block;
-  }
-  .me-panel {
-    display: block;
-  }
   #me {
-    width: 215px;
+    width: 100px;
+    height: 100px;
+  }
+  .resume-panel-container {
+    display: block;
   }
   .add-margins {
-    margin: 48px 16px;
+    margin: 16px 16px 48px;
   }
 }
